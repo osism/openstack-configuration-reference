@@ -1,0 +1,29 @@
+========================================
+{{ name }}
+========================================
+
+{% for option in options %}
+
+.. confval:: {{ option.name }}
+    :type: {{ types[option.name] }}
+    {% if option.default|trim|length > 0 -%}
+    :default: ``{{ option.default|trim }}``
+    {% else -%}
+    :default: Unset
+    {% endif -%}
+    :required: {{ option.required }}
+
+    {{ option.help }}
+    {% if option.deprecated_for_removal %}
+    .. warning::
+    
+       {% if deprecated_since %}
+       This parameter is deprecated for removal since the {{ option.deprecated_since }} release.
+       {% else %}
+       This parameter is deprecated for removal.
+       {% endif %}
+       {% if option.deprecated_reason %}
+       {{ option.deprecated_reason }}
+       {% endif %}
+    {% endif %}
+{% endfor %}

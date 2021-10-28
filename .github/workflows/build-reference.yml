@@ -1,0 +1,49 @@
+---
+name: Build reference
+
+"on":
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/build-reference.yml
+      - Containerfile
+      - main.py
+      - output/*
+      - scripts/*
+      - templates/*
+  pull_request:
+    paths:
+      - .github/workflows/build-reference.yml
+      - Containerfile
+      - main.py
+      - output/*
+      - scripts/*
+      - templates/*
+
+jobs:
+  build-reference:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        openstack_version:
+          - wallaby
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Build documentation
+        run: scripts/build.sh
+        env:
+          VERSION: ${{ matrix.openstack_version }}
+      - name: Upload documentation
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          local-dir: build/html/
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: strict
+          server-dir: /
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+        if: github.ref == 'refs/heads/main'

@@ -1,0 +1,22 @@
+keystone:
+  - keystone
+  - oslo.cache
+  - oslo.log
+  - oslo.messaging
+  - oslo.policy
+  - oslo.db
+  - oslo.middleware
+  - osprofiler
+
+nova:
+  - nova.conf
+  - oslo.log
+  - oslo.messaging
+  - oslo.policy
+  - oslo.service.periodic_task
+  - oslo.service.service
+  - oslo.db
+  - oslo.db.concurrency
+  - oslo.middleware
+  - oslo.concurrency
+  - keystonemiddleware.auth_token

@@ -1,0 +1,10 @@
+===========================
+{{ name|title }}
+===========================
+
+.. toctree::
+   :maxdepth: 2
+
+   {% for section in sections %}
+   {{ name }}-{{ section }}
+   {%- endfor %}
