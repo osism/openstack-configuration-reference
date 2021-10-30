@@ -1,3 +1,4 @@
-keystone*.rst
-nova*rst
 build
+cinder*rst
+keystone*rst
+nova*rst

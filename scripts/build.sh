@@ -8,6 +8,7 @@ buildah build-using-dockerfile \
     --tag "generator:$VERSION" \
     $BUILD_OPTS .
 
+podman run --rm -v $(pwd)/output:/output generator:$VERSION python3 /main.py cinder
 podman run --rm -v $(pwd)/output:/output generator:$VERSION python3 /main.py keystone
 podman run --rm -v $(pwd)/output:/output generator:$VERSION python3 /main.py nova
 

@@ -10,5 +10,6 @@ at (docs.openstack.org)[https://docs.openstack.org/xena/configuration/].
 .. toctree::
    :maxdepth: 2
 
+   cinder
    keystone
    nova
