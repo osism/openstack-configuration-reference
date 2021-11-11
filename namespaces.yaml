@@ -1,3 +1,6 @@
+oslo.cache:
+  - oslo.cache
+
 keystone:
   - keystone
   - oslo.cache

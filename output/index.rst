@@ -13,3 +13,4 @@ at `docs.openstack.org <https://docs.openstack.org/xena/configuration/>`_.
    cinder
    keystone
    nova
+   oslo.cache
