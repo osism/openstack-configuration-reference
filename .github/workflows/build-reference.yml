@@ -11,6 +11,8 @@ name: Build reference
       - output/*
       - scripts/*
       - templates/*
+    branches:
+      - main
   pull_request:
     paths:
       - .github/workflows/build-reference.yml
