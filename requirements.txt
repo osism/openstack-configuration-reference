@@ -1,6 +1,6 @@
 Jinja2==3.0.2
 PyYAML==6.0
-oslo.config==8.7.1
+oslo.config==8.8.0
 Sphinx==4.2.0
 sphinx_toolbox
 sphinx_rtd_theme
