@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
         if not options:
             next
-        
+
         option_types = {}
         for option in options:
             if isinstance(option.type, types.List):
@@ -81,8 +81,6 @@ if __name__ == "__main__":
             "types": option_types
         }
         fp.write(template.render(template_data))
-
-
 
     # :param name: the option's name
     # :param type: the option's type. Must be a callable object that takes string
