@@ -21,4 +21,14 @@ RUN apt-get update \
         python3-keystone \
         python3-neutron \
     && pip3 install --no-cache-dir -r /requirements.txt \
-    && mkdir /output
+    && mkdir /output \
+    && apt-get clean \
+    && apt-get autoremove -y \
+    && rm -rf \
+      /var/cache/apt \
+      /var/lib/apt/lists/* \
+      /root/.cache \
+      /tmp/* \
+      /usr/share/doc/* \
+      /usr/share/man/* \
+      /var/tmp/*
