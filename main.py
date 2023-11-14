@@ -23,15 +23,12 @@ if __name__ == "__main__":
 
     template_service = environment.get_template("service.j2")
     fp = open(f"/output/{SERVICE}.rst", "w+")
-    template_data = {
-        "name": SERVICE,
-        "sections": sorted(groups.keys())
-    }
+    template_data = {"name": SERVICE, "sections": sorted(groups.keys())}
     fp.write(template_service.render(template_data))
 
     template = environment.get_template("confval.j2")
     for name, data in groups.items():
-        _, options = data['namespaces'][0]
+        _, options = data["namespaces"][0]
 
         if not options:
             next
@@ -44,7 +41,10 @@ if __name__ == "__main__":
                 option_type = "Boolean"
             elif isinstance(option.type, types.Integer):
                 if option.type.min and option.type.max:
-                    option_type = "Integer, ``>= %d``, ``<= %d``" % (option.type.min, option.type.max)
+                    option_type = "Integer, ``>= %d``, ``<= %d``" % (
+                        option.type.min,
+                        option.type.max,
+                    )
                 elif option.type.min:
                     option_type = "Integer, ``>= %d``" % option.type.min
                 elif option.type.max:
@@ -53,7 +53,10 @@ if __name__ == "__main__":
                     option_type = "Integer"
             elif isinstance(option.type, types.Float):
                 if option.type.min and option.type.max:
-                    option_type = "Float, ``>= %.2f``, <= ``%.2f``" % (option.type.min, option.type.max)
+                    option_type = "Float, ``>= %.2f``, <= ``%.2f``" % (
+                        option.type.min,
+                        option.type.max,
+                    )
                 elif option.type.min:
                     option_type = "Float, ``>= %.2f``" % option.type.min
                 elif option.type.max:
@@ -77,8 +80,8 @@ if __name__ == "__main__":
         fp = open(f"/output/{SERVICE}-{name}.rst", "w+")
         template_data = {
             "name": name,
-            "options": sorted(options, key=attrgetter('name')),
-            "types": option_types
+            "options": sorted(options, key=attrgetter("name")),
+            "types": option_types,
         }
         fp.write(template.render(template_data))
 
