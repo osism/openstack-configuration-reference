@@ -6,11 +6,14 @@
       jobs:
         - flake8
         - hadolint
+        - python-black
     gate:
       jobs:
         - flake8
         - hadolint
+        - python-black
     periodic-daily:
       jobs:
         - flake8
         - hadolint
+        - python-black
