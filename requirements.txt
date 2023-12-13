@@ -1,6 +1,0 @@
-Jinja2
-PyYAML
-oslo.config
-Sphinx
-sphinx_toolbox
-sphinx_rtd_theme
