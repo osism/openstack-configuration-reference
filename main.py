@@ -10,9 +10,9 @@ if __name__ == "__main__":
 
     NAMESPACES = os.environ.get("NAMESPACES", "/namespaces.yaml")
     OUTPUT = os.environ.get("OUTPUT", "/output")
-    TEMPLATES_PATH = os.environ.get("TEMPLATES_PATH", "/templates")
+    TEMPLATES = os.environ.get("TEMPLATES", "/templates")
 
-    loader = jinja2.FileSystemLoader(searchpath=TEMPLATES_PATH)
+    loader = jinja2.FileSystemLoader(searchpath=TEMPLATES)
     environment = jinja2.Environment(loader=loader)
 
     with open(NAMESPACES) as fp:
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     groups = generator._get_groups(generator._list_opts(ns))
 
     template_service = environment.get_template("service.j2")
-    fp = open(f"/output/{SERVICE}.rst", "w+")
+    fp = open(f"/{OUTPUT}/{SERVICE}.rst", "w+")
     template_data = {"name": SERVICE, "sections": sorted(groups.keys())}
     fp.write(template_service.render(template_data))
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
             option_types[option.name] = option_type
 
-        fp = open(f"/output/{SERVICE}-{name}.rst", "w+")
+        fp = open(f"/{OUTPUT}/{SERVICE}-{name}.rst", "w+")
         template_data = {
             "name": name,
             "options": sorted(options, key=attrgetter("name")),
