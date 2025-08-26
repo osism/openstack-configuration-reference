@@ -39,7 +39,7 @@ jobs:
         env:
           VERSION: ${{ matrix.openstack_version }}
       - name: Upload documentation
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           local-dir: build/html/
           password: ${{ secrets.FTP_PASSWORD }}
